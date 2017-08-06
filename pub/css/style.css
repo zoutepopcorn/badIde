@@ -1,0 +1,72 @@
+cool {
+  display: block;
+  color: red;
+  position: relative;
+  width: 0em;
+  max-height: 1em;
+  font-size: 16px;
+  font-family: monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+  -webkit-animation: typecon 1s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.CodeMirror {
+  border: 1px solid #eee;
+  height: 50vh;
+}
+
+#codeBox {
+  height: 150vh;
+}
+
+#out {
+  background: black;
+  height:40vh;
+  overflow-y:auto;
+  float:left;
+  position:relative;
+  margin-left:-5px;
+  width:100vw;
+  float:left;
+  padding:0 0 0 5px;
+  position:relative;
+  float:left;
+  border-right: 1px #f8f7f3 solid;
+}
+
+cool::after {
+  content: '';
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  height: 1em;
+  width: 1em;
+  background: red;
+  box-shadow:  -1em 0px 30px 10px red;
+  -webkit-animation: typeconCur 1s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes typecon /* Safari and Chrome */
+{
+from {width: 16px;
+    }
+
+to {width: 100%;
+   }
+}
+
+@-webkit-keyframes typeconCur /* Safari and Chrome */
+{
+60% {opacity: 0.85;}
+100% {opacity: 0;
+    box-shadow:  -1em 0px 30px 0px red;
+      }
+}
+
+cool:after{
+  -webkit-animation-delay: 0s
+}

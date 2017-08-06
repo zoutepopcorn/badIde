@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>codeMirror</title>
-</head>
-
-<body>
-  <html lang="en">
+<html lang="en">
 
 <head>
 	<title>S17dit</title>
@@ -15,40 +7,26 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/mode/javascript/javascript.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/mode/cmake/cmake.js"></script>
 
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/codemirror.css">
+  <link rel="stylesheet" href="/css/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/mode/python/python.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/addon/mode/loadmode.js"></script>
 </head>
 
 <body>
-	<textarea name="code" class="form-control col-lg-10" id="codeBox" rows="20"></textarea>
-
-  <script src="js/index.js"></script>
+	<textarea name="code" class="form-control" id="codeBox"></textarea>
+  <div id="out">
+      <cool>some info</cool>
+  </div>
 
   <div id="future"></div>
   <form id="form" id="chat_form">
       <input type="submit" value="Send">
   </form>
-
-  <script>
-     let socket = io.connect(window.location.origin);
-     socket.on('connect', function(data) {
-        socket.emit('join', 'Hello World from client');
-     });
-     socket.on('broad', function(data) {
-             $('#future').html(data);
-     });
-
-     $('form').submit(function(e){
-         e.preventDefault();
-         var message = $('#chat_input').val();
-         socket.emit('msg', {data: codeMirror.getValue()});
-     });
-  </script>
-
+  <script src="js/index.js"></script>
 
 
 </body>
