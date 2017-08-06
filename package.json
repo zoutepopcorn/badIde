@@ -1,0 +1,28 @@
+{
+  "name": "17-badge",
+  "version": "1.0.0",
+  "description": "sha 2017 serial port test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoutepopcorn/17-badge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zoutepopcorn/17-badge/issues"
+  },
+  "homepage": "https://github.com/zoutepopcorn/17-badge#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "express": "^4.15.3",
+    "node-serial": "^0.1.1",
+    "serial": "0.0.9",
+    "serialport": "^5.0.0",
+    "serialport-js": "^1.1.0",
+    "socket.io": "^2.0.3"
+  }
+}
