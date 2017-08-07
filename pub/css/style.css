@@ -60,13 +60,13 @@ button:nth-child(6n + 6) {
 }
 
 #codeBox {
-  height: 150vh;
+  height: 50vh;
 }
 
 
 #out {
   background: black;
-  height:40vh;
+  height:36vh;
   overflow-y:auto;
   float:left;
   position:relative;
@@ -85,7 +85,7 @@ textarea:focus, input:focus{
 }
 
 #command {
-    width: 80vw;
+    width: 75vw;
     padding: 10px;
     border: 0px;
     background: rgb(4, 4, 5);
@@ -94,6 +94,12 @@ textarea:focus, input:focus{
     font-size: 24px;
 }
 
+#bottom {
+  position: fixed;
+
+  bottom: -6px;
+  z-index: 999;
+}
 
 #root {
     display: inline-block;

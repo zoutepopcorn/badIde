@@ -25,17 +25,25 @@
  } );
 
  socket.on('status', function(data) {
-			console.log("***********************************************");
+			console.log("*********");
 			console.log(data);
-			console.log("***********************************************");
+			console.log("*****");
 			$.notify(data.data, "danger");
 			$.notify(data.data, "succes");
-			// $.notify(data, {});
  });
 
+upload = () => {
+	let message = codeMirror.getValue().split("\n");
+	console.log(message);
+	message.forEach((line, i) => {
+		console.log(line);
+		setTimeout(() => { socket.emit('code', {data: line}); }, i * 100)
+	});
+
+}
+
  $('#upload').click(() => {
-	 let message = $('#chat_input').val();
-	 socket.emit('msg', {data: codeMirror.getValue()});
+	 upload();
  });
 
  $('#help').click(() => {
@@ -51,6 +59,14 @@
      return false;    //<---- Add this line
    }
  });
+
+ $('body').keydown(function (e) {
+   if (e.ctrlKey && e.keyCode == 13) {
+		 upload();
+   }
+ });
+
+
 
 let loading = function(e) {
   e.preventDefault();

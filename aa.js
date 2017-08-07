@@ -36,6 +36,11 @@ io.on('connection', function(client) {
     client.on('msg', function(data) {
       data.data.split("\n").forEach((val) => { ser.write(val) })
     });
+    client.on('code', function(data) {
+      console.log("code");
+      ser.write(data.data)
+    });
+
 });
 
 server.listen(PORT);
