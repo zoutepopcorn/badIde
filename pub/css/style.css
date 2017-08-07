@@ -1,3 +1,17 @@
+html {
+  overflow:   scroll;
+
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+  background-color: #000;
+}
+
 cool {
   display: block;
   color: red;
@@ -13,8 +27,31 @@ cool {
   -webkit-animation-fill-mode: forwards;
 }
 
-cool.test {
+cool {
   color: #0f0;
+}
+
+cool.in {
+  color: #99f;
+}
+
+button:nth-child(6n + 1) {
+  background-color: #C057D6;
+}
+button:nth-child(6n + 2) {
+  background-color: #086A9A;
+}
+button:nth-child(6n + 3) {
+  background-color: #5B4DDB;
+}
+button:nth-child(6n + 4) {
+  background-color: #2C7E52;
+}
+button:nth-child(6n + 5) {
+  background-color: #D39A49;
+}
+button:nth-child(6n + 6) {
+  background-color: #06B939;
 }
 
 .CodeMirror {
@@ -39,7 +76,30 @@ cool.test {
   padding:0 0 0 5px;
   position:relative;
   float:left;
-  border-right: 1px #f8f7f3 solid;
+  border-right: 10px #f8f7f3 solid;
+  padding-bottom: 20px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+#command {
+    width: 80vw;
+    padding: 10px;
+    border: 0px;
+    background: rgb(4, 4, 5);
+    color: #bbf;
+    height: 4vh;
+    font-size: 24px;
+}
+
+
+#root {
+    display: inline-block;
+    color: #eef;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 cool::after {
@@ -87,7 +147,7 @@ button {
 	font-size:1rem;
 	font-weight:bold;
 	color:rgba(0,0,0,0);
-	background:transparent;
+	--background:transparent;
 	border-radius:.25rem;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
@@ -125,7 +185,7 @@ button:before {
 button:before {
 	z-index:2;
 	color:#fff;
-	background-color:#3e87ec;
+	--background-color:#3e87ec;
 	content:attr(data-label);
 }
 

@@ -3,6 +3,7 @@ const Readline = SerialPort.parsers.Readline;
 let isImport = false;
 
 function SerBadge(prt, cb) {
+  SerialPort.list((p) => { console.log(p) });
   const port = new SerialPort(prt, {baudRate: 115200});
   const parser = new Readline();
   let colors = require('colors');
@@ -19,7 +20,7 @@ function SerBadge(prt, cb) {
       console.log("------------ RESET DETECTED --------------------".rainbow);
       cb({type: "status", data: "reset"});
     }
-    if( line.indexOf("MicroPython v") > -1 ) {
+    if( line.indexOf("To use shell type 'import shell' within 5 seconds.") > -1 ) {
       cb({type: "status", data: "python"});
       console.log("------------MICRO PYTHON----------------------".rainbow);
       if(timer) clearInterval(timer);

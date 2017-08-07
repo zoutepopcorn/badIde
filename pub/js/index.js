@@ -17,6 +17,9 @@
 			console.log(dat.data)
 			let o = $("#out");
 			let style = "test";
+			if(dat.data.indexOf(">>>") == 0) {
+				style = "in";
+			}
 			o.append(`<cool class=${style}>${dat.data}</cool>`);
 			o.scrollTop(o.prop("scrollHeight"));
  } );
@@ -30,16 +33,8 @@
 			// $.notify(data, {});
  });
 
-/*
- $('form').submit(function(e){
-		 e.preventDefault();
-		 var message = $('#chat_input').val();
-		 socket.emit('msg', {data: codeMirror.getValue()});
- });
-*/
-
  $('#upload').click(() => {
-	 var message = $('#chat_input').val();
+	 let message = $('#chat_input').val();
 	 socket.emit('msg', {data: codeMirror.getValue()});
  });
 
@@ -47,7 +42,17 @@
 	 socket.emit('msg', { data: "help()" });
  });
 
-var loading = function(e) {
+
+ $('#command').keypress(function (e) {
+   if (e.which == 13) {
+		 let message = $('#command').val();
+		 $('#command').val("");
+		 socket.emit('msg', { data: message } );
+     return false;    //<---- Add this line
+   }
+ });
+
+let loading = function(e) {
   e.preventDefault();
   e.stopPropagation();
   e.target.classList.add('loading');
@@ -58,7 +63,7 @@ var loading = function(e) {
   },1500);
 };
 
-var btns = document.querySelectorAll('button');
+let btns = document.querySelectorAll('button');
 for (var i=btns.length-1;i>=0;i--) {
   btns[i].addEventListener('click',loading);
 }
