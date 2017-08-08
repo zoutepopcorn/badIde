@@ -20,17 +20,17 @@ function SerBadge(prt, cb) {
       console.log("------------ RESET DETECTED --------------------".rainbow);
       cb({type: "status", data: "reset"});
     }
-    if( line.indexOf("To use shell type 'import shell' within 5 seconds.") > -1 ) {
+    if( line.indexOf("within 5 seconds.") > -1 ) {
       cb({type: "status", data: "python"});
       console.log("------------MICRO PYTHON----------------------".rainbow);
       if(timer) clearInterval(timer);
       console.log("hi".data);
-      if(!isImport) {
-        setTimeout(() => {
-          port.write("import shell\x0D");
-          isImport = true;
-        }, 2000);
-      }
+      // if(!isImport) {
+      setTimeout(() => {
+        port.write("import shell\x0D");
+        isImport = true;
+      }, 2000);
+      // }
     }
     if(line.indexOf("E (") < 0)
       cb({type: "data", data: line})

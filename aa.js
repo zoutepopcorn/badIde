@@ -15,7 +15,6 @@ let onData = (dat) => {
     }
     if(cl) {
       console.log(`${dat.type} ${dat.data}`.red);
-
       cl.emit(dat.type, { data: dat.data});
     }
 }
@@ -28,6 +27,7 @@ app.get('/', function(req, res,next) {
 
 io.on('connection', function(client) {
     console.log('Client connected...');
+    ser.write(`print("I am connected :|")`);
     cl = client;
     client.on('join', function(data) {
         console.log(data.grey);

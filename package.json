@@ -19,6 +19,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "express": "^4.15.3",
+    "gattacker": "^0.2.1",
     "node-serial": "^0.1.1",
     "serial": "0.0.9",
     "serialport": "^5.0.0",

@@ -1,4 +1,5 @@
 	let codeMirror;
+  let isSending = false;
 
 	window.onload = function() {
 		codeMirror = CodeMirror.fromTextArea(document.getElementById("codeBox"), {
@@ -32,13 +33,31 @@
 			$.notify(data.data, "succes");
  });
 
+runAll = (msg, cb) => {
+	isSending = true;
+	msg.forEach((line, i, arr) => {
+		console.log(line);
+		setTimeout(() => {
+			socket.emit('code', { data: line});
+			if(i > arr.length) {
+				console.log("latest")
+			}
+		}, i * 500);
+	});
+}
+
 upload = () => {
 	let message = codeMirror.getValue().split("\n");
 	console.log(message);
-	message.forEach((line, i) => {
-		console.log(line);
-		setTimeout(() => { socket.emit('code', {data: line}); }, i * 100)
-	});
+	runAll(msg);
+}
+
+
+
+install = (i) => {
+	const get = i.split(" ")[2]
+	console.log(`install ${get}` );
+	runAll(["import wifi", "import woezel", "wifi.init()"]);
 
 }
 
@@ -54,8 +73,14 @@ upload = () => {
  $('#command').keypress(function (e) {
    if (e.which == 13) {
 		 let message = $('#command').val();
+		 console.log(message)
 		 $('#command').val("");
-		 socket.emit('msg', { data: message } );
+		 console.log(message)
+		 if(message.indexOf("woezel i") > -1) {
+			 install(message);
+		 } else {
+			 socket.emit('msg', { data: message } );
+		 }
      return false;    //<---- Add this line
    }
  });
